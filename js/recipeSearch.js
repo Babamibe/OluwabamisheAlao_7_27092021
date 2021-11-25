@@ -45,8 +45,8 @@ export class SearchRecipe{
         if(this.recipeList.length === 0){
             RecipeCards.nothingFound();
         }
-        if(input.length == 0) {
-                RecipeCards.eraseSearch();
+        if(input.length <3) {
+                //RecipeCards.eraseSearch();
                 RecipeCards.showRecipeCards()
             
         }

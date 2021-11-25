@@ -41,6 +41,10 @@
   border-right: none;
 }
 
+.input-group {
+  width: 200px;
+}
+
 .card-body {
   background-color: #E7E7E7;
   height: 186px;
