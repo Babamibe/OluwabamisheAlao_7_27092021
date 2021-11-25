@@ -1,0 +1,36 @@
+#search-input{
+    background-color: $gray-500;
+}
+
+#search-input-group{
+    position: relative;
+}
+
+#search-icon{
+    position: absolute;
+    top: 25%;
+    right: 10px;
+}
+
+.ingredients__text-input, .appliances__text-input, .ustensils__text-input{
+    border-right: none;
+}
+
+.ingredient, .appliance, .ustensil{
+    display: flex;
+    cursor: pointer;
+    width: 13rem;
+    height: 2.55rem;
+    padding-left: 10px;
+    align-items: center;
+    &:hover{
+        filter: brightness(80%);
+    }
+}
+
+.ingredients, .appliances, .ustensils{
+    width: 10rem;
+    min-width: 10rem;
+    position: relative;
+    border-right: none;
+}

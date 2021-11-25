@@ -1,0 +1,9 @@
+
+$primary: #3282F7;
+$success: #68D9A4;
+$danger: #ED6454;
+$gray-200: #E7E7E7;
+$gray-500: #C7BEBE;
+
+@import "components/input", "components/cards";
+@import "../../node_modules/bootstrap/scss/bootstrap";

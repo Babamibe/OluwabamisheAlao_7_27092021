@@ -1,0 +1,29 @@
+.card-body{
+    background-color: $gray-200;
+    height: 186px;
+}
+.h5{
+    font-size: 1rem;
+}
+.img-holder{
+    background-color: $gray-500;
+    height: 178px;
+}
+
+.card-layout{
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+}
+
+.ingredient-item{
+    font-weight: bold;
+}
+
+.card-text{
+    width: 50%;
+    height: 110px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+

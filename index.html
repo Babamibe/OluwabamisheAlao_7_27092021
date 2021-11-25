@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css">
+
+    <link rel="stylesheet" href="sass/main.css">
+    <title>Les petits plats</title>
+</head>
+<body>
+    <div class="header container-fluid">
+        <div class="row m-4">
+            <div class="col text-center">
+                <a href="index.html" class="nav-brand">
+                    <img src="images/logo.png" alt="site logo">
+                </a>
+            </div>
+        </div>
+    </div>
+    <main class="content">
+        <div class="search-group">
+            <div id="search-input-group" class="input-group-lg m-4">
+                <input id="search-input" type="text" class="form-control rounded search-input" 
+                placeholder="Rechercher un ingrédient, appareil, ustensiles ou une recette" />
+                <span id="search-icon"><i class="fas fa-search"></i></span>
+            </div>
+            <div id="tags" class="container--tag mt-4 mb-4"></div>
+            <div id="input" class="container--input d-flex gap-4 tags">
+            </div>
+        </div>
+        <div class="container row m-4">
+            
+        </div>
+    </main>
+    <script src="js/recipes.js"></script>
+    <script src="js/main.js" type="module"></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
+
