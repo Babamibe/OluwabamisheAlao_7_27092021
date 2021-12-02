@@ -46,18 +46,18 @@ export class InputTags{
             RecipeCards.eraseSearch();
             RecipeCards.displayRecipecards();
         }else{
-            for(item of tags){
+            for(let item of tags){
                 let filteredRecipeArray = [];
                 if(item.classList.contains("bg-success")){
-                    for(recipe of currentRecipes){
+                    for(let recipe of currentRecipes){
                         if(recipe.appliance.toLowerCase().match(item.innerText)){
                             filteredRecipeArray.push(recipe);
                         }
                     }
                 }
                 if (item.classList.contains("bg-danger")) {
-                    for(recipe of currentRecipes){
-                        for(ustensil in recipe.ustensils){
+                    for(let recipe of currentRecipes){
+                        for(let ustensil in recipe.ustensils){
                             if(ustensil.toLowerCase().match(item.innerText)){
                                 filteredRecipeArray.push(recipe);
                             }
@@ -65,8 +65,8 @@ export class InputTags{
                     }
                 }
                 if(item.classList.contains("bg-primary")) {
-                    for(recipe of currentRecipes){
-                        for(element in recipe.ingredients){
+                    for(let recipe of currentRecipes){
+                        for(let element in recipe.ingredients){
                             if(element.ingredient.toLowerCase().match(item.innerText)){
                                 filteredRecipeArray.push(recipe)
                             }
@@ -77,7 +77,7 @@ export class InputTags{
             currentRecipes = filteredRecipeArray;
             RecipeCards.eraseSearch();
             search.currentList = currentRecipes;
-            for(recipe of currentRecipes){
+            for(let recipe of currentRecipes){
                 RecipeCards.showSearchedRecipes(recipe);
             }            
         }
