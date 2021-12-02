@@ -26,27 +26,29 @@ export class SearchRecipe{
             let recipeList = [...this.recipeList];
             this.recipeList = [];
             RecipeCards.eraseSearch();
-            for(const recipe of recipeList){
+            recipeList.forEach(recipe => {
                 if(recipe.name.toLowerCase().includes(input.toLowerCase()) || recipe.description.toLowerCase().includes(input.toLowerCase())){
                     this.recipeList.push(recipe);
                     RecipeCards.showSearchedRecipes(recipe);
                 }else{
-                    for(const ingredient of recipe.ingredients){
+                    recipe.ingredients.forEach(ingredient => {
                         if(ingredient.ingredient.toLowerCase().replace(/ /g,'').includes(input.toLowerCase().replace(/ /g,'')) && !this.recipeList.includes(recipe)){
                             this.recipeList.push(recipe);
                             RecipeCards.showSearchedRecipes(recipe);
                         }
-                    }
+                    })
                 }
-            }
+            })
+
+            
         }else{
             this.filterRecipes();
         }
         if(this.recipeList.length === 0){
             RecipeCards.nothingFound();
         }
-        if(input.length <3) {
-                //RecipeCards.eraseSearch();
+        if(input.length < 3) {
+                RecipeCards.eraseSearch();
                 RecipeCards.showRecipeCards()
             
         }
@@ -55,10 +57,10 @@ export class SearchRecipe{
     filterRecipes(){
         this.recipeList = RecipeCards.recipesArray;
         if(this.tags.length != 0){
-            for( const tag of this.tags){
+            this.tags.forEach(tag => {
                 let recipesArray = [...this.recipeList];
-                this.recipeList = [];                
-                for(const recipe of recipesArray){
+                this.recipeList = [];
+                recipesArray.forEach( recipe => {
                     if(tag.category == "ingredient"){
                         recipe.ingredients.forEach(element => {
                             if(element.ingredient.toLowerCase() == tag.name){
@@ -69,15 +71,18 @@ export class SearchRecipe{
                         if(recipe.appliance.toLowerCase() == tag.name){
                             this.recipeList.push(recipe);
                         }
-                    }else if(tag.category == "ustentils"){
-                        if(recipe.ustentils.toLowerCase() == tag.name){
-                            this.recipeList.push(recipe);
-                        }
+                    }else if(tag.category == "ustensil"){
+                        recipe.ustensils.forEach(item => {
+                            if(item.toLowerCase() == tag.name){
+                                this.recipeList.push(recipe);
+                            }
+                        })
                     }
-                    
-                }
+                })              
+
                 recipesArray = [...this.recipeList];
-            }
+            })
+
         } 
         RecipeCards.eraseSearch();
         //RecipeCards.showSearchedRecipes(this.recipeList);

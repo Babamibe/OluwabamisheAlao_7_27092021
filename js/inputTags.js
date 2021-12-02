@@ -22,7 +22,7 @@ export class InputTags{
             tagButton.classList.add("bg-primary")
         }else if(this.category === "appliance"){
             tagButton.classList.add("bg-success")
-        }else if(this.category === "ustentil"){
+        }else if(this.category === "ustensil"){
             tagButton.classList.add("bg-danger")
         };
         tagButton.innerHTML = `
@@ -46,39 +46,40 @@ export class InputTags{
             RecipeCards.eraseSearch();
             RecipeCards.displayRecipecards();
         }else{
-            tags.forEach(item => {
+            for(item of tags){
                 let filteredRecipeArray = [];
                 if(item.classList.contains("bg-success")){
-                    currentRecipes.forEach(recipe => {
-                       if(recipe.appliance.toLowerCase().match(item.innerText)){
-                           filteredRecipeArray.push(recipe);
-                       }
-                    })
+                    for(recipe of currentRecipes){
+                        if(recipe.appliance.toLowerCase().match(item.innerText)){
+                            filteredRecipeArray.push(recipe);
+                        }
+                    }
                 }
-                if(item.classList.contains("bg-danger")){
-                    currentRecipes.forEach(recipe => {
-                        recipe.ustensils.forEach(ustentil => {
-                            if(ustentil.toLowerCase().match(item.innerText)){
+                if (item.classList.contains("bg-danger")) {
+                    for(recipe of currentRecipes){
+                        for(ustensil in recipe.ustensils){
+                            if(ustensil.toLowerCase().match(item.innerText)){
                                 filteredRecipeArray.push(recipe);
                             }
-                        })
-                    })
+                        }
+                    }
                 }
-                if(item.classList.contains("bg-primary")){
-                    currentRecipes.forEach(recipe => {
-                        recipe.ingredients.forEach(element => {
+                if(item.classList.contains("bg-primary")) {
+                    for(recipe of currentRecipes){
+                        for(element in recipe.ingredients){
                             if(element.ingredient.toLowerCase().match(item.innerText)){
-                                filteredRecipeArray.push(recipe);
+                                filteredRecipeArray.push(recipe)
                             }
-                        })
-                    })
+                        }
+                    }
                 }
-                currentRecipes = filteredRecipeArray;
-                RecipeCards.eraseSearch();
-                search.currentList = currentRecipes;
-                currentRecipes.forEach(recipe => RecipeCards.showSearchedRecipes(recipe));
-
-            })
+            }
+            currentRecipes = filteredRecipeArray;
+            RecipeCards.eraseSearch();
+            search.currentList = currentRecipes;
+            for(recipe of currentRecipes){
+                RecipeCards.showSearchedRecipes(recipe);
+            }            
         }
     }
 }

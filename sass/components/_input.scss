@@ -13,7 +13,7 @@
 }
 
 .ingredients__text-input, .appliances__text-input, .ustensils__text-input{
-    border-right: none;
+    border-right: none !important;
 }
 
 .ingredient, .appliance, .ustensil{
@@ -29,7 +29,7 @@
 }
 
 .ingredients, .appliances, .ustensils{
-    width: 10rem;
+    //width: 10rem !important;
     min-width: 10rem;
     position: relative;
     border-right: none;
@@ -37,4 +37,14 @@
 
 .input-group{
     width: 200px;
+}
+
+.ingredients__ul, .appliances__ul, .ustensils__ul{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.rounded-right{
+    border-top-right-radius: 5px !important;
+    border-bottom-right-radius: 5px !important;
 }

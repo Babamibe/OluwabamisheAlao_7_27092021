@@ -111,11 +111,11 @@ export class AdvanceInput{
     filterElements(e) {
         let filter = [];
         let list = this.refreshList();
-        list.forEach(item => {
-            if(item.includes(e.target.value)) {
+        for(item of list){
+            if(item.includes(e.target.value)){
                 filter.push(item);
             }
-        });
+        }
         this.openDropdown(filter);
     }
 

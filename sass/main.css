@@ -13,7 +13,7 @@
 }
 
 .ingredients__text-input, .appliances__text-input, .ustensils__text-input {
-  border-right: none;
+  border-right: none !important;
 }
 
 .ingredient, .appliance, .ustensil {
@@ -35,7 +35,6 @@
 }
 
 .ingredients, .appliances, .ustensils {
-  width: 10rem;
   min-width: 10rem;
   position: relative;
   border-right: none;
@@ -45,13 +44,26 @@
   width: 200px;
 }
 
+.ingredients__ul, .appliances__ul, .ustensils__ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.rounded-right {
+  border-top-right-radius: 5px !important;
+  border-bottom-right-radius: 5px !important;
+}
+
 .card-body {
   background-color: #E7E7E7;
   height: 186px;
 }
 
-.h5 {
-  font-size: 1rem;
+.card-title {
+  font-size: 1rem !important;
 }
 
 .img-holder {
@@ -78,6 +90,14 @@
   height: 110px;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+#tags {
+  margin: 20px;
+}
+
+.tag {
+  padding: 10px 20px;
 }
 
 /*!
