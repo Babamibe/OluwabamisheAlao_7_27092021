@@ -14,6 +14,7 @@ export class AdvanceInput{
         this.inputCategory(`${name}s`, `${category}s`, bg);
     }
 
+    //create advance search inputs
     inputCategory(name, category, bg){
         this.inputGroup.classList.add('input-group', 'm-4', category, 'rounded');
         document.getElementById('input').appendChild(this.inputGroup);
@@ -37,6 +38,7 @@ export class AdvanceInput{
         });
     }
 
+    //open advance search input
     openInput = () =>{
         this.inputGroup.classList.add(`${this.category}s-lg`);
         this.inputSpace.classList.remove(`${this.category}s__text-input`);
@@ -47,7 +49,7 @@ export class AdvanceInput{
         this.iconSpan.classList.add(`chevron-${this.category}s-deployed`);
         this.iconArrow.classList.add(`fa-chevron-up`);
         this.iconArrow.classList.remove(`fa-chevron-down`);
-        this.openDropdown(this.refreshList());
+        this.openDropdown(this.refreshList(), this.category);
         this.iconSpan.removeEventListener(`click`, this.openInput);
         document.addEventListener(`click`, this.closeInput);
         this.inputGroup.addEventListener("click", e =>{
@@ -59,8 +61,11 @@ export class AdvanceInput{
         this.iconSpan.addEventListener(`click`, this.closeInput);
     }
 
+    // close advance search input
     closeInput = () => {
         this.inputGroup.classList.remove(`${this.category}s-lg`);
+        this.inputSpace.classList.add(`${this.category}s__text-input`);
+        this.inputSpace.classList.remove(`${this.category}s__text-input-lg`);
         this.inputSpace.setAttribute(`aria-label`, `${this.name}s`)
         this.inputSpace.setAttribute(`placeholder`, `${this.name}s`);
         this.iconArrow.classList.remove(`fa-chevron-up`);
@@ -81,12 +86,14 @@ export class AdvanceInput{
         });
     }
 
+    // create dropdown div
     dropdownMenu(){
         this.hiddenDropdown.classList.add(this.bg, `${this.category}s__list`, `rounded-bottom`);
         this.hiddenDropdown.style.display = "none";
         this.inputGroup.appendChild(this.hiddenDropdown);
     }
 
+    //create dropdown list
     dropdownList = (element) => {
         this.itemList.innerHTML = ``;
         this.hiddenDropdown.appendChild(this.itemList);
@@ -102,16 +109,18 @@ export class AdvanceInput{
             })
         })
     }
-
+    // show dropdown list
     openDropdown(element){
+        console.log("element", element)
         this.dropdownList(element);
         this.hiddenDropdown.style.display = "flex";
     }
 
+    // filter dropdown list after input
     filterElements(e) {
         let filter = [];
         let list = this.refreshList();
-        for(item of list){
+        for(let item of list){
             if(item.includes(e.target.value)){
                 filter.push(item);
             }
@@ -119,6 +128,7 @@ export class AdvanceInput{
         this.openDropdown(filter);
     }
 
+    // hide dropdown
     closeDropdown(){
         this.hiddenDropdown.style.display = "none";
     }

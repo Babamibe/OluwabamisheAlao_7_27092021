@@ -10,6 +10,7 @@ export class Appliances extends AdvanceInput{
 
     refreshList = () =>{
         this.list = search.currentList;
+        console.log('test', this.list)
         let actualizedList = [];
         for(let i=0; i< this.list.length ;i++){
             if(!actualizedList.includes(this.list[i].appliance.toLowerCase())) actualizedList.push(this.list[i].appliance.toLowerCase());

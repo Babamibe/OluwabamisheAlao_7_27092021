@@ -9,13 +9,16 @@ export class Ustensils extends AdvanceInput{
     }
 
     refreshList = () =>{
-        this.list = search.currentList;
+        this.list = search.currentList;       
         let actualizedList = [];
-        for(let i=0; i< this.list.length ;i++){
-            this.list[i].ustensils.forEach(ustensil => {
-                if(!actualizedList.includes(ustensil.toLowerCase())) actualizedList.push(ustensil.toLowerCase());
+        for(let i = 0; i < this.list.length; i++){
+            this.list[i].ustensils.forEach(ustensil =>{
+            if(!actualizedList.includes(ustensil.toLowerCase())) actualizedList.push(ustensil.toLowerCase());
+            console.log('ustensil', ustensil) 
             });
+                       
         }
         return actualizedList;
+
     }
 }

@@ -16,6 +16,12 @@
     border-right: none !important;
 }
 
+.ingredients__text-input-lg, .appliances__text-input-lg, .ustensils__text-input-lg{
+    border-radius: 5px 0 0 0 !important;
+    border-bottom: none !important;
+    border-right: none !important;
+}
+
 .ingredient, .appliance, .ustensil{
     display: flex;
     cursor: pointer;
@@ -29,22 +35,42 @@
 }
 
 .ingredients, .appliances, .ustensils{
-    //width: 10rem !important;
+    width: 200px !important;
     min-width: 10rem;
     position: relative;
     border-right: none;
 }
 
+.ingredients-lg, .appliances-lg, .ustensils-lg{
+    width: 630px !important;
+}
+
+#input{
+    display: flex;
+}
+
 .input-group{
-    width: 200px;
+    //width: 200px;
+    height: fit-content;
 }
 
 .ingredients__ul, .appliances__ul, .ustensils__ul{
     display: flex;
     flex-wrap: wrap;
+    width: inherit;
 }
+
+/*.ingredients__list, .appliances__list, .ustensils__list{
+    width: inherit;
+}*/
 
 .rounded-right{
     border-top-right-radius: 5px !important;
     border-bottom-right-radius: 5px !important;
+}
+
+.chevron-ingredients-deployed, .chevron-appliances-deployed, .chevron-ustensils-deployed{
+    border-left: none !important;
+    border-bottom: none !important;
+    border-bottom-right-radius: 0 !important;
 }

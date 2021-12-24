@@ -10,12 +10,14 @@ export class Ingredients extends AdvanceInput{
 
     refreshList = () =>{
         this.list = search.currentList;
+        console.log('thislist',this.list)
         let actualizedList = [];
         for(let i=0; i< this.list.length ;i++){
             this.list[i].ingredients.forEach(ingredient => {
                 if(!actualizedList.includes(ingredient.ingredient.toLowerCase())) actualizedList.push(ingredient.ingredient.toLowerCase());
             });
         }
+        console.log('actualizedlist',actualizedList)
         return actualizedList;
     }
 }

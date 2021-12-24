@@ -37,6 +37,16 @@ export class SearchRecipe{
                             RecipeCards.showSearchedRecipes(recipe);
                         }
                     })
+                    recipe.ustensils.forEach(ustensil => {
+                        if(ustensil.toLowerCase().replace(/ /g,'').includes(input.toLowerCase().replace(/ /g,'')) && !this.recipeList.includes(recipe)){
+                            this.recipeList.push(recipe);
+                            RecipeCards.showSearchedRecipes(recipe);
+                        }
+                    })
+                    if(recipe.appliance.toLowerCase().replace(/ /g,'').includes(input.toLowerCase().replace(/ /g,'')) && !this.recipeList.includes(recipe)){
+                        this.recipeList.push(recipe);
+                        RecipeCards.showSearchedRecipes(recipe);
+                    }
                 }
             })
 
@@ -61,6 +71,7 @@ export class SearchRecipe{
                 let recipesArray = [...this.recipeList];
                 this.recipeList = [];
                 recipesArray.forEach( recipe => {
+                    console.log("category", tag.category)
                     if(tag.category == "ingredient"){
                         recipe.ingredients.forEach(element => {
                             if(element.ingredient.toLowerCase() == tag.name){
@@ -81,6 +92,7 @@ export class SearchRecipe{
                 })              
 
                 recipesArray = [...this.recipeList];
+                console.log("recipesarray",recipesArray)
             })
 
         } 
