@@ -37,6 +37,16 @@ export class SearchRecipe{
                             RecipeCards.showSearchedRecipes(recipe);
                         }
                     }
+                    for(const ustensil of recipe.ustensils){
+                        if(ustensil.toLowerCase().replace(/ /g, '').includes(input.toLowerCase().replace(/ /g, '')) && !this.recipeList.includes(recipe)){
+                            this.recipeList.push(recipe);
+                            RecipeCards.showSearchedRecipes(recipe);
+                        }
+                    }
+                    if(recipe.appliance.toLowerCase().replace(/ /g,'').includes(input.toLowerCase().replace(/ /g,'')) && !this.recipeList.includes(recipe)){
+                        this.recipeList.push(recipe);
+                        RecipeCards.showSearchedRecipes(recipe);
+                    }
                 }
             }
         }else{
@@ -46,7 +56,6 @@ export class SearchRecipe{
             RecipeCards.nothingFound();
         }
         if(input.length <3) {
-                //RecipeCards.eraseSearch();
                 RecipeCards.showRecipeCards()
             
         }
@@ -69,10 +78,12 @@ export class SearchRecipe{
                         if(recipe.appliance.toLowerCase() == tag.name){
                             this.recipeList.push(recipe);
                         }
-                    }else if(tag.category == "ustentils"){
-                        if(recipe.ustentils.toLowerCase() == tag.name){
-                            this.recipeList.push(recipe);
-                        }
+                    }else if(tag.category == "ustensil"){
+                        recipe.ustensils.forEach(item => {
+                            if(item.toLowerCase() == tag.name){
+                                this.recipeList.push(recipe);
+                            }
+                        })
                     }
                     
                 }
@@ -80,12 +91,10 @@ export class SearchRecipe{
             }
         } 
         RecipeCards.eraseSearch();
-        //RecipeCards.showSearchedRecipes(this.recipeList);
     }
     createTag(category, name){
         new InputTags(name, category);
         this.tags.push({name, category});
-        console.log("searchinput", name)
         this.findRecipe(name, category);
     }
     removeTag(category, name){

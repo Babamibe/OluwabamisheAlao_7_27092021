@@ -22,11 +22,11 @@ export class InputTags{
             tagButton.classList.add("bg-primary")
         }else if(this.category === "appliance"){
             tagButton.classList.add("bg-success")
-        }else if(this.category === "ustentil"){
+        }else if(this.category === "ustensil"){
             tagButton.classList.add("bg-danger")
         };
         tagButton.innerHTML = `
-        <span>${this.tag}</span><i class="far fa-times-circle"></i>
+        <span class="tag-text">${this.tag}</span><i class="far fa-times-circle"></i>
         `;
         this.tagContainer.appendChild(tagButton);
         tagButton.addEventListener("click", e => {
